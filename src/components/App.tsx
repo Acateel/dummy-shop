@@ -1,8 +1,9 @@
+import ProductsList from "./products/productsList"
 
 function App() {
   return (
     <div className="App">
-      dummy shop
+      <ProductsList/>
     </div>
   )
 }
