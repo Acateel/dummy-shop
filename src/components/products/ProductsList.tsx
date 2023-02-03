@@ -3,32 +3,35 @@ import { RootState } from "../../state/store";
 import { fetchProducts } from "../../state/creators";
 import { Fragment, useEffect } from "react";
 import _ from "lodash";
+import ProductCart from "./ProductCart";
+import "./ProductsList.css";
 
 const mapState = (state: RootState) => ({
-    products: state.products
-})
+  products: state.products,
+});
 
-const connector = connect(mapState, {fetchProducts})
+const connector = connect(mapState, { fetchProducts });
 
-type PropsFromRedux = ConnectedProps<typeof connector>
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const ProductsList = (props: PropsFromRedux) => {
-    useEffect(()=>{
-        props.fetchProducts()
-    }, [])
+  useEffect(() => {
+    props.fetchProducts();
+  }, []);
 
-    const renderedList = () =>  Object.values(props.products).map(product => (
-        <div key={product.id}>
-            {product.title}
-        </div>
-    ))
+  const renderedList = () =>
+    Object.values(props.products).map((product) => (
+      <ProductCart key={product.id} product={product} />
+    ));
 
-    return (
-        <Fragment>
-            <h1>Product List</h1>
-            {_.isEmpty(props.products) ? null : renderedList()}
-        </Fragment>
-    )
-}
+  return (
+    <Fragment>
+      <h1>Product List</h1>
+      <div className="products_list">
+        {_.isEmpty(props.products) ? null : renderedList()}
+      </div>
+    </Fragment>
+  );
+};
 
-export default connector(ProductsList)
+export default connector(ProductsList);
