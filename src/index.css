@@ -1,5 +1,11 @@
 body {
+  padding: 0;
+  margin: 0;
   color: #807272;
   font-size: 14px;
   font-family: "PT Sans", sans-serif;
+}
+
+.content {
+  margin: 50px;
 }

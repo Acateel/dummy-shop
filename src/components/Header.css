@@ -1,0 +1,17 @@
+header {
+  height: 100px;
+  box-shadow: 0 0px 3px 2px #dadada;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.nav_link {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px;
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
