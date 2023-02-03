@@ -1,11 +1,20 @@
-import ProductsList from "./products/productsList"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Header from "./Header"
+import ProductsList from "./products/ProductsList"
+
+const router = createBrowserRouter([{
+  path: "/",
+  element: <Header/>,
+  children: [
+    {
+      path: "/",
+      element: <ProductsList/>
+    }
+  ]
+}])
 
 function App() {
-  return (
-    <div className="App">
-      <ProductsList/>
-    </div>
-  )
+  return <RouterProvider router={router}/>
 }
 
 export default App
