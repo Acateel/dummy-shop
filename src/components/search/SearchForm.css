@@ -9,10 +9,14 @@
 .search {
   font-size: 18px;
   font-weight: 700;
+  color: inherit;
+  font-style: inherit;
   padding: 10px;
   cursor: pointer;
   border: none;
   border-radius: inherit;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .search_submit {
