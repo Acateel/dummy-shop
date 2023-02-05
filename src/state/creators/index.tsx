@@ -14,6 +14,21 @@ export const fetchProducts = () => async (dispatch: Dispatch<Action>) => {
   });
 };
 
+export const searchProducts =
+  (term: string) => async (dispatch: Dispatch<Action>) => {
+    const products = await dummyJSON
+      .get("/products/search", {
+        params: {
+          q: term,
+        },
+      })
+      .then((response) => response.data.products);
+    dispatch({
+      type: ActionType.FETCH_PRODUCTS,
+      payload: products,
+    });
+  };
+
 export const fetchProduct =
   (id: number) =>
   async (dispatch: Dispatch<Action>, getState: () => RootState) => {
