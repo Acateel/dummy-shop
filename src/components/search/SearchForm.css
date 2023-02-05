@@ -1,0 +1,36 @@
+.search_form {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: inherit;
+}
+
+.search_submit {
+  width: 43px;
+  height: 43px;
+
+  border: none;
+  border-left: 1px solid #ccc;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search_submit > img {
+  width: 80%;
+}
