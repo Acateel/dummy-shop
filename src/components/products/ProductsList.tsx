@@ -10,15 +10,11 @@ const mapState = (state: RootState) => ({
   products: state.products,
 });
 
-const connector = connect(mapState, { fetchProducts });
+const connector = connect(mapState);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const ProductsList = (props: PropsFromRedux) => {
-  useEffect(() => {
-    props.fetchProducts();
-  }, []);
-
   const renderedList = () =>
     Object.values(props.products).map((product) => (
       <ProductCart key={product.id} product={product} />
