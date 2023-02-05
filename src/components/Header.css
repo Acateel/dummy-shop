@@ -1,9 +1,12 @@
-header {
-  height: 100px;
-  box-shadow: 0 0px 3px 2px #dadada;
+header, .header_left {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+header {
+  height: 100px;
+  box-shadow: 0 0px 3px 2px #dadada;
   padding: 0 50px;
 }
 
