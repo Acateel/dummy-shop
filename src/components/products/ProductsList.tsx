@@ -21,12 +21,9 @@ const ProductsList = (props: PropsFromRedux) => {
     ));
 
   return (
-    <Fragment>
-      <h1>Product List</h1>
-      <div className="products_list">
-        {_.isEmpty(props.products) ? null : renderedList()}
-      </div>
-    </Fragment>
+    <div className="products_list">
+      {_.isEmpty(props.products) ? null : renderedList()}
+    </div>
   );
 };
 
