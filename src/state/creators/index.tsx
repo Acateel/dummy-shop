@@ -63,3 +63,14 @@ export const fetchProductsByCategory =
       payload: products,
     });
   };
+
+export const appendProductsByLimit =
+  (limit: number, skip: number) => async (dispatch: Dispatch<Action>) => {
+    const products = await dummyJSON
+      .get("/products", { params: { limit, skip } })
+      .then((response) => response.data.products);
+    dispatch({
+      type: ActionType.APPEND_PRODUCTS,
+      payload: products,
+    });
+  };

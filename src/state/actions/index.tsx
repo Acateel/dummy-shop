@@ -5,6 +5,11 @@ interface FetchProducts {
   payload: Product[];
 }
 
+interface AppendProducts {
+  type: ActionType.APPEND_PRODUCTS;
+  payload: Product[];
+}
+
 interface FetchProduct {
   type: ActionType.FETCH_PRODUCT;
   payload: Product;
@@ -15,4 +20,8 @@ interface FetchCategories {
   payload: string[];
 }
 
-export type Action = FetchProducts | FetchProduct | FetchCategories;
+export type Action =
+  | FetchProducts
+  | FetchProduct
+  | FetchCategories
+  | AppendProducts;
