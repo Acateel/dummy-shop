@@ -52,3 +52,14 @@ export const fetchCategories = () => async (dispatch: Dispatch<Action>) => {
     payload: categories,
   });
 };
+
+export const fetchProductsByCategory =
+  (category: string) => async (dispatch: Dispatch<Action>) => {
+    const products = await dummyJSON
+      .get(`/products/category/${category}`)
+      .then((response) => response.data.products);
+    dispatch({
+      type: ActionType.FETCH_PRODUCTS,
+      payload: products,
+    });
+  };
