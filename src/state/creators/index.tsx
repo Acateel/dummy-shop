@@ -42,3 +42,13 @@ export const fetchProduct =
       payload: product,
     });
   };
+
+export const fetchCategories = () => async (dispatch: Dispatch<Action>) => {
+  const categories = await dummyJSON
+    .get("/products/categories")
+    .then((response) => response.data);
+  dispatch({
+    type: ActionType.FETCH_CATEGORIES,
+    payload: categories,
+  });
+};

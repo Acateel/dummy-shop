@@ -10,4 +10,9 @@ interface FetchProduct {
   payload: Product;
 }
 
-export type Action = FetchProducts | FetchProduct;
+interface FetchCategories {
+  type: ActionType.FETCH_CATEGORIES;
+  payload: string[];
+}
+
+export type Action = FetchProducts | FetchProduct | FetchCategories;
