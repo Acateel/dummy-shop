@@ -1,14 +1,23 @@
 import { connect, ConnectedProps } from "react-redux";
 import { ChangeEvent, Fragment, useEffect } from "react";
 import { RootState } from "../../state/store";
-import { fetchCategories, fetchProducts, fetchProductsByCategory } from "../../state/creators";
+import {
+  fetchCategories,
+  fetchProducts,
+  fetchProductsByCategory,
+} from "../../state/creators";
 import ProductsList from "./ProductsList";
+import "./CategoriesProducts.css";
 
 const mapState = (state: RootState) => ({
   categories: state.categories,
 });
 
-const connector = connect(mapState, { fetchCategories, fetchProducts, fetchProductsByCategory });
+const connector = connect(mapState, {
+  fetchCategories,
+  fetchProducts,
+  fetchProductsByCategory,
+});
 
 type TypeFromRedux = ConnectedProps<typeof connector>;
 
@@ -19,14 +28,21 @@ const CategoriesProducts = (props: TypeFromRedux) => {
   }, []);
 
   const onSelectCategory = (event: ChangeEvent<HTMLInputElement>) => {
-    props.fetchProductsByCategory(event.target.value)
+    props.fetchProductsByCategory(event.target.value);
   };
 
   const renderedCategories = () =>
     props.categories.map((category) => (
-      <Fragment key={category}>
-        <input type="radio" value={category} name="category" /> {category}
-      </Fragment>
+      <label key={category}>
+        <input
+          className="checkmark"
+          type="radio"
+          value={category}
+          name="category"
+        />
+        {category}
+        <br />
+      </label>
     ));
 
   return (
