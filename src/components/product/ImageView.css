@@ -1,0 +1,35 @@
+.image_view {
+  display: grid;
+  grid-template-columns: 140px 580px;
+}
+
+.image_view_select_image {
+  width: 100px;
+  height: 100px;
+  border: 2px gray solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 22px;
+}
+
+.image_selected {
+  border: 2px orange solid;
+}
+
+.image_view_select_image > img {
+  max-width: 90px;
+  max-height: 90px;
+}
+
+.image_view_image {
+  max-width: 580px;
+  max-height: 580px;
+  margin: 10px;
+  text-align: center;
+}
+
+.image_view_image_box {
+  display: flex;
+  align-items: center;
+}
