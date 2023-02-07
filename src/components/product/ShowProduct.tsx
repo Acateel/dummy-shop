@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { RootState } from "../../state/store";
 import { fetchProduct } from "../../state/creators";
 import { Fragment, useEffect } from "react";
-import "./ShowProduct.css"
+import "./ShowProduct.css";
 import ImageView from "./ImageView";
 
 const mapState = (state: RootState) => ({
@@ -33,11 +33,17 @@ const ShowProduct = (props: PropsFromRedux) => {
       <div className="show_product_grid">
         <ImageView images={product.images} />
         <div className="show_product_price_section">
-          <p>{product.discountPercentage}%</p>
-          <p>{product.price}$</p>
+          <div className="show_product_discont_box">
+            <p className="show_product_discount">
+              {product.discountPercentage}%
+            </p>
+            <p className="show_product_stosk">Stock: {product.stock}</p>
+          </div>
+          <p className="show_product_price">{product.price}$</p>
+          <button className="show_product_buy"><img src="/buy_cart_icon.png"/> Buy</button>
         </div>
       </div>
-      <p>{product.description}</p>
+      <p className="show_product_description">{product.description}</p>
     </div>
   );
 
