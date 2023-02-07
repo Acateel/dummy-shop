@@ -4,6 +4,7 @@ import { RootState } from "../../state/store";
 import { fetchProduct } from "../../state/creators";
 import { Fragment, useEffect } from "react";
 import "./ShowProduct.css"
+import ImageView from "./ImageView";
 
 const mapState = (state: RootState) => ({
   products: state.products,
@@ -30,7 +31,7 @@ const ShowProduct = (props: PropsFromRedux) => {
         <h1>{product.rating}/5.00</h1>
       </div>
       <div className="show_product_grid">
-        <div>Image view</div>
+        <ImageView images={product.images} />
         <div className="show_product_price_section">
           <p>{product.discountPercentage}%</p>
           <p>{product.price}$</p>
