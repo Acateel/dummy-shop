@@ -1,0 +1,14 @@
+.show_product{
+    margin: 100px;
+}
+
+.show_product_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.show_product_grid {
+    display: grid;
+    grid-template-columns: auto auto;
+}

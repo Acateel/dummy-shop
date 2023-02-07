@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./Header";
 import AllProducts from "./products/AllProducts";
 import CategoriesProducts from "./products/CategoriesProducts";
-import ShowProduct from "./products/ShowProduct";
+import ShowProduct from "./product/ShowProduct";
 import SearchProducts from "./search/SearchProducts";
 
 const router = createBrowserRouter([
