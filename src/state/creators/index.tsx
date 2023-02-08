@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { Dispatch } from "react";
 import dummyJSON from "../../api/dummyJSON";
 import { Action } from "../actions";
@@ -78,13 +79,24 @@ export const appendProductsByLimit =
 export const loginAuthUser =
   (username: string, password: string) =>
   async (dispatch: Dispatch<Action>) => {
-    const authUser = await dummyJSON
-      .post("/auth/login", { username, password })
-      .then((response) => response.data);
-    dispatch({
-      type: ActionType.LOGIN_USER,
-      payload: authUser,
-    });
+    try {
+      const authUser = await dummyJSON
+        .post("/auth/login", { username, password })
+        .then((response) => response.data);
+      dispatch({
+        type: ActionType.LOGIN_USER,
+        payload: authUser,
+      });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        dispatch({
+          type: ActionType.LOGIN_USER,
+          payload: { error: true },
+        });
+      } else {
+        throw error;
+      }
+    }
   };
 
 export const logoutAuthUser = () => ({

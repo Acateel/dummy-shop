@@ -22,7 +22,7 @@ interface FetchCategories {
 
 interface LoginUser {
   type: ActionType.LOGIN_USER;
-  payload: AuthUser;
+  payload: AuthUser | { error: boolean };
 }
 
 interface LogoutUser {
