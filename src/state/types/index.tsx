@@ -3,6 +3,8 @@ export enum ActionType {
   APPEND_PRODUCTS = "APPEND_PRODUCTS",
   FETCH_PRODUCT = "FETCH_PRODUCT",
   FETCH_CATEGORIES = "FETCH_CATEGORIES",
+  LOGIN_USER = "LOGIN_USER",
+  LOGOUT_USER = "LOGOUT_USER",
 }
 
 export interface Product {
@@ -17,4 +19,15 @@ export interface Product {
   category: string;
   thumbnail: string;
   images: string[];
+}
+
+export interface AuthUser {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: "male" | "female" | "none";
+  image: string;
+  token: string;
 }

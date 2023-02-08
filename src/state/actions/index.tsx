@@ -1,4 +1,4 @@
-import { ActionType, Product } from "../types";
+import { ActionType, Product, AuthUser } from "../types";
 
 interface FetchProducts {
   type: ActionType.FETCH_PRODUCTS;
@@ -20,8 +20,19 @@ interface FetchCategories {
   payload: string[];
 }
 
+interface LoginUser {
+  type: ActionType.LOGIN_USER;
+  payload: AuthUser;
+}
+
+interface LogoutUser {
+  type: ActionType.LOGOUT_USER;
+}
+
 export type Action =
   | FetchProducts
   | FetchProduct
   | FetchCategories
-  | AppendProducts;
+  | AppendProducts
+  | LoginUser
+  | LogoutUser;

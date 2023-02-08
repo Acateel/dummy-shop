@@ -74,3 +74,19 @@ export const appendProductsByLimit =
       payload: products,
     });
   };
+
+export const loginAuthUser =
+  (username: string, password: string) =>
+  async (dispatch: Dispatch<Action>) => {
+    const authUser = await dummyJSON
+      .post("/auth/login", { username, password })
+      .then((response) => response.data);
+    dispatch({
+      type: ActionType.LOGIN_USER,
+      payload: authUser,
+    });
+  };
+
+export const logoutAuthUser = () => ({
+  type: ActionType.LOGOUT_USER,
+});
