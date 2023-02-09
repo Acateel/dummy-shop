@@ -1,9 +1,15 @@
-import {configureStore} from "@reduxjs/toolkit"
-import reducers from "./reducers"
+import { configureStore } from "@reduxjs/toolkit";
+import reducers from "./reducers";
+import { save, load } from "redux-sessionstorage-simple";
 
 export const store = configureStore({
-    reducer: reducers
-})
+  reducer: reducers,
+  preloadedState: load(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(save({
+        states: ["auth"]
+    })),
+});
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
