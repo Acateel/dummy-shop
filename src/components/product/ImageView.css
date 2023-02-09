@@ -14,7 +14,7 @@
 }
 
 .image_selected {
-  border: 2px orange solid;
+  border: 2px #f99417 solid;
 }
 
 .image_view_select_image > img {
