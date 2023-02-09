@@ -1,10 +1,36 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { connect, ConnectedProps } from "react-redux";
+import { Link, Outlet } from "react-router-dom";
+import _ from "lodash";
+import { RootState } from "../state/store";
 import "./Header.css";
 import SearchForm from "./search/SearchForm";
 
-const Header = () => {
+const mapState = (state: RootState) => ({
+  auth: state.auth,
+});
+
+const connector = connect(mapState);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const Header = (props: PropsFromRedux) => {
+  const isLogged: boolean =
+    !_.isEmpty(props.auth) && !_.hasIn(props.auth, "error");
+
+  const renderedLeftHeader = (user: any) => {
+    return (
+      <Fragment>
+        <Link className="nav_link" to="/">
+          {user.firstName} {user.lastName}
+        </Link>
+        <Link className="nav_link" to="/">
+          Logout
+        </Link>
+      </Fragment>
+    );
+  };
+
   return (
     <Fragment>
       <header>
@@ -19,9 +45,15 @@ const Header = () => {
             <SearchForm />
           </div>
         </div>
-        <Link to="/login" className="nav_link">
-          Login
-        </Link>
+        <div>
+          {isLogged ? (
+            renderedLeftHeader(props.auth)
+          ) : (
+            <Link to="/login" className="nav_link">
+              Login
+            </Link>
+          )}
+        </div>
       </header>
       <div className="content">
         <Outlet />
@@ -30,4 +62,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connector(Header);
