@@ -24,7 +24,7 @@ const Header = (props: PropsFromRedux) => {
         <Link className="nav_link" to="/">
           {user.firstName} {user.lastName}
         </Link>
-        <Link className="nav_link" to="/">
+        <Link className="nav_link" to="/logout">
           Logout
         </Link>
       </Fragment>

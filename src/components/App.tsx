@@ -5,6 +5,7 @@ import CategoriesProducts from "./products/CategoriesProducts";
 import ShowProduct from "./product/ShowProduct";
 import SearchProducts from "./search/SearchProducts";
 import Login from "./auth/Login";
+import Logout from "./auth/Logout";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/logout",
+        element: <Logout />,
       },
     ],
   },
