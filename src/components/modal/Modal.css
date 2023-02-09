@@ -1,5 +1,61 @@
 .modal {
-    position: absolute;
-    left: 5px;
-    top: 5px;
+  position: absolute;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+}
+
+.modal_form {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  z-index: 1001;
+  background-color: #fff;
+  box-shadow: 1px 3px 3px 0 rgb(0 0 0 / 20%), 1px 3px 15px 2px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  width: 350px;
+}
+
+.modal_header {
+  font-family: 700;
+  padding: 1.25rem 1.5rem;
+  color: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.modal_content {
+  font-size: 18px;
+  font-family: 500;
+  padding: 1.25rem 1.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.modal_action {
+  text-align: right;
+  padding: 1rem 1rem;
+}
+
+.modal_action > button {
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: 700;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0 10px 20px 0;
+  width: 100px;
+}
+
+.modal_logout_button {
+  background-color: #db2828;
+}
+
+.modal_dismiss_button {
+  background-color: #2185d0;
 }
