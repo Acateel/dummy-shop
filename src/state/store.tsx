@@ -6,9 +6,7 @@ export const store = configureStore({
   reducer: reducers,
   preloadedState: load(),
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(save({
-        states: ["auth"]
-    })),
+    getDefaultMiddleware().prepend(save()),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
