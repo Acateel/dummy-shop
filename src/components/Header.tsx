@@ -22,7 +22,7 @@ const Header = (props: PropsFromRedux) => {
   const renderedLeftHeader = (user: any) => {
     return (
       <Fragment>
-        <Link className="nav_link" to="/">
+        <Link className="nav_link" to="/cart">
           <ShortCart/>
         </Link>
         <Link className="nav_link" to="/">
