@@ -5,6 +5,7 @@ import _ from "lodash";
 import { RootState } from "../state/store";
 import "./Header.css";
 import SearchForm from "./search/SearchForm";
+import ShortCart from "./carts/ShortCart";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -21,6 +22,9 @@ const Header = (props: PropsFromRedux) => {
   const renderedLeftHeader = (user: any) => {
     return (
       <Fragment>
+        <Link className="nav_link" to="/">
+          <ShortCart/>
+        </Link>
         <Link className="nav_link" to="/">
           {user.firstName} {user.lastName}
         </Link>
@@ -45,7 +49,7 @@ const Header = (props: PropsFromRedux) => {
             <SearchForm />
           </div>
         </div>
-        <div>
+        <div className="header_right">
           {isLogged ? (
             renderedLeftHeader(props.auth)
           ) : (
