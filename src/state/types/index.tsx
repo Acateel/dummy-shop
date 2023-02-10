@@ -23,6 +23,16 @@ export interface Product {
   images: string[];
 }
 
+export interface BuyProduct {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  total: number;
+  discountPercentage: number;
+  discountedPrice: number;
+}
+
 export interface AuthUser {
   id: number;
   username: string;
@@ -36,7 +46,7 @@ export interface AuthUser {
 
 export interface Cart {
   id: number;
-  products: Product[];
+  products: BuyProduct[];
   total: number;
   discountedTotal: number;
   userId: number;
