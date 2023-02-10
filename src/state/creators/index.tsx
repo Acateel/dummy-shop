@@ -102,3 +102,19 @@ export const loginAuthUser =
 export const logoutAuthUser = () => ({
   type: ActionType.LOGOUT_USER,
 });
+
+export const fetchUserCart =
+  (userId: number) => async (dispatch: Dispatch<Action>) => {
+    const cart = await dummyJSON
+      .get(`/carts/user/${userId}`)
+      .then((response) => response.data.carts);
+
+    dispatch({
+      type: ActionType.FETCH_USER_CART,
+      payload: cart,
+    });
+  };
+
+export const removeUserCart = () => ({
+  type: ActionType.REMOVE_USER_CART,
+});

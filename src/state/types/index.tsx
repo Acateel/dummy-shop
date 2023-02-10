@@ -5,6 +5,8 @@ export enum ActionType {
   FETCH_CATEGORIES = "FETCH_CATEGORIES",
   LOGIN_USER = "LOGIN_USER",
   LOGOUT_USER = "LOGOUT_USER",
+  FETCH_USER_CART = "FETCH_USER_CART",
+  REMOVE_USER_CART = "REMOVE_USER_CART",
 }
 
 export interface Product {
@@ -30,4 +32,14 @@ export interface AuthUser {
   gender: "male" | "female" | "none";
   image: string;
   token: string;
+}
+
+export interface Cart {
+  id: number;
+  products: Product[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
 }
