@@ -2,9 +2,9 @@ import { Fragment } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Modal from "../modal/Modal";
-import { logoutAuthUser } from "../../state/creators";
+import { logoutAuthUser, removeUserCart } from "../../state/creators";
 
-const connector = connect(null, { logoutAuthUser });
+const connector = connect(null, { logoutAuthUser, removeUserCart });
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
@@ -13,6 +13,7 @@ const Logout = (props: PropsFromRedux) => {
 
   const onLogout = () => {
     props.logoutAuthUser();
+    props.removeUserCart();
     navigate("/");
   };
 
