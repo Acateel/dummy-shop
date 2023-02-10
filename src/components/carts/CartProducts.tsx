@@ -47,6 +47,10 @@ const CartProducts = (props: PropsFromRedux) => {
       </div>
     ));
 
+  if(typeof cart === "undefined") {
+    return <h1>You dont buy anything</h1>
+  }
+
   return (
     <Fragment>
       <div className="cart_title">
