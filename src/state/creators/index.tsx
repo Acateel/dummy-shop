@@ -118,3 +118,19 @@ export const fetchUserCart =
 export const removeUserCart = () => ({
   type: ActionType.REMOVE_USER_CART,
 });
+
+export const fetchUser =
+  (userId: number) => async (dispatch: Dispatch<Action>) => {
+    const user = await dummyJSON
+      .get(`/users/${userId}`)
+      .then((response) => response.data);
+
+    dispatch({
+      type: ActionType.FETCH_USER,
+      payload: user,
+    });
+  };
+
+export const removeUser = () => ({
+  type: ActionType.REMOVE_USER,
+});
