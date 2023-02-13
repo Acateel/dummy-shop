@@ -3,6 +3,7 @@ import { RootState } from "../../state/store";
 import { fetchUserCart, fetchUser } from "../../state/creators";
 import { Cart, User } from "../../state/types";
 import { useEffect } from "react";
+import "./Pay.css"
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -34,7 +35,7 @@ const Pay = (props: PropsFromRedux) => {
     <form className="payment">
       <div className="payment_total">
         <h1>Total</h1>
-        <h1>$ {cart.total} <span>USD</span></h1>
+        <h1>$ {cart.total} <span className="payment_usd">USD</span></h1>
       </div>
       <div className="payment_fullname">
         <input type="text" placeholder="First name" value={user ? user.firstName : ""}/>
@@ -43,9 +44,10 @@ const Pay = (props: PropsFromRedux) => {
       <div className="payment_card">
         <input type="text" placeholder="Card number" value={user ? user.bank.cardNumber : ""}/>
         <input type="text" placeholder="CVV"/>
+        <div></div>
         <input type="text" placeholder="MM/YY" value={user ? user.bank.cardExpire : ""}/>
       </div>
-      <button type="submit">Submit payment</button>
+      <button className="payment_submit" type="submit">Submit payment</button>
     </form>
   );
 };
