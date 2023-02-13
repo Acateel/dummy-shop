@@ -7,6 +7,7 @@ import SearchProducts from "./search/SearchProducts";
 import Login from "./auth/Login";
 import Logout from "./auth/Logout";
 import CartProducts from "./carts/CartProducts";
+import Pay from "./pay/Pay";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartProducts />,
+      },
+      {
+        path: "/pay",
+        element: <Pay />,
       },
     ],
   },

@@ -4,7 +4,7 @@ import { RootState } from "../../state/store";
 import { fetchUserCart } from "../../state/creators";
 import { Cart } from "../../state/types";
 import "./CartProducts.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -16,6 +16,7 @@ const connector = connect(mapState, { fetchUserCart });
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const CartProducts = (props: PropsFromRedux) => {
+  const navigate = useNavigate();
   const auth: any = props.auth;
   const cart: Cart = props.cart;
 
@@ -47,8 +48,8 @@ const CartProducts = (props: PropsFromRedux) => {
       </div>
     ));
 
-  if(typeof cart === "undefined") {
-    return <h1>You dont buy anything</h1>
+  if (typeof cart === "undefined") {
+    return <h1>You dont buy anything</h1>;
   }
 
   return (
@@ -78,7 +79,7 @@ const CartProducts = (props: PropsFromRedux) => {
               </span>
             </p>
           </div>
-          <button className="cart_buy_button">
+          <button className="cart_buy_button" onClick={() => navigate("/pay")}>
             <img src="/buy_cart_icon.png" /> Buy
           </button>
         </div>
