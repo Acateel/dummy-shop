@@ -26,7 +26,28 @@ const Pay = (props: PropsFromRedux) => {
     }
   }, [])
 
-  return <h1>Pay page</h1>;
+  if(!cart) {
+    return <h1>Dont have a cart</h1>
+  }
+
+  return (
+    <form className="payment">
+      <div className="payment_total">
+        <h1>Total</h1>
+        <h1>$ {cart.total} <span>USD</span></h1>
+      </div>
+      <div className="payment_fullname">
+        <input type="text" placeholder="First name" value={user ? user.firstName : ""}/>
+        <input type="text" placeholder="Last name" value={user ? user.lastName : ""}/>
+      </div>
+      <div className="payment_card">
+        <input type="text" placeholder="Card number" value={user ? user.bank.cardNumber : ""}/>
+        <input type="text" placeholder="CVV"/>
+        <input type="text" placeholder="MM/YY" value={user ? user.bank.cardExpire : ""}/>
+      </div>
+      <button type="submit">Submit payment</button>
+    </form>
+  );
 };
 
 export default connector(Pay);
