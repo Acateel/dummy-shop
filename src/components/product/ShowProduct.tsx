@@ -1,7 +1,7 @@
 import { connect, ConnectedProps } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../../state/store";
-import { fetchProduct } from "../../state/creators";
+import { fetchProduct, addIntoCart } from "../../state/creators";
 import { Fragment, useEffect } from "react";
 import "./ShowProduct.css";
 import ImageView from "./ImageView";
@@ -10,7 +10,7 @@ const mapState = (state: RootState) => ({
   products: state.products,
 });
 
-const connector = connect(mapState, { fetchProduct });
+const connector = connect(mapState, { fetchProduct, addIntoCart });
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
@@ -23,6 +23,10 @@ const ShowProduct = (props: PropsFromRedux) => {
   }, []);
 
   const product = props.products[id];
+
+  const onBuyProduct = () => {
+    props.addIntoCart(product.id, 1); // add change quantity later
+  };
 
   const renderedProduct = () => (
     <div className="show_product">
@@ -40,7 +44,9 @@ const ShowProduct = (props: PropsFromRedux) => {
             <p className="show_product_stosk">Stock: {product.stock}</p>
           </div>
           <p className="show_product_price">{product.price}$</p>
-          <button className="show_product_buy"><img src="/buy_cart_icon.png"/> Buy</button>
+          <button className="show_product_buy" onClick={onBuyProduct}>
+            <img src="/buy_cart_icon.png" /> Buy
+          </button>
         </div>
       </div>
       <p className="show_product_description">{product.description}</p>

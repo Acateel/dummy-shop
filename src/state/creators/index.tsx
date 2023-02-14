@@ -1,8 +1,9 @@
 import { AxiosError } from "axios";
+import _ from "lodash";
 import { Dispatch } from "react";
 import dummyJSON from "../../api/dummyJSON";
 import { Action } from "../actions";
-import { RootState } from "../reducers";
+import { RootState } from "../store";
 import { ActionType } from "../types";
 
 export const fetchProducts = () => async (dispatch: Dispatch<Action>) => {
@@ -135,7 +136,16 @@ export const removeUser = () => ({
   type: ActionType.REMOVE_USER,
 });
 
-export const addIntoOfflineCart = (productId: number, quantity: number) => ({
-  type: ActionType.ADD_INTO_ONREG_CART,
-  payload: { id: productId, quantity: quantity },
-});
+export const addIntoCart =
+  (productId: number, quantity: number) =>
+  async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const isLogged = _.hasIn(getState().auth, "id");
+    if (isLogged) {
+      // add into user cart, dont realise now
+    } else {
+      dispatch({
+        type: ActionType.ADD_INTO_ONREG_CART,
+        payload: { id: productId, quantity: quantity },
+      });
+    }
+  };
