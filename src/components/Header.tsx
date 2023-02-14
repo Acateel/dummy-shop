@@ -22,9 +22,6 @@ const Header = (props: PropsFromRedux) => {
   const renderedLeftHeader = (user: any) => {
     return (
       <Fragment>
-        <Link className="nav_link" to="/cart">
-          <ShortCart/>
-        </Link>
         <Link className="nav_link" to="/">
           {user.firstName} {user.lastName}
         </Link>
@@ -50,6 +47,9 @@ const Header = (props: PropsFromRedux) => {
           </div>
         </div>
         <div className="header_right">
+          <Link className="nav_link" to="/cart">
+            <ShortCart />
+          </Link>
           {isLogged ? (
             renderedLeftHeader(props.auth)
           ) : (
