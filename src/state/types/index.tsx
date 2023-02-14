@@ -9,6 +9,7 @@ export enum ActionType {
   REMOVE_USER_CART = "REMOVE_USER_CART",
   FETCH_USER = "FETCH_USER",
   REMOVE_USER = "REMOVE_USER",
+  ADD_INTO_ONREG_CART = "ADD_INTO_ONREG_CART",
 }
 
 export interface Product {
@@ -116,4 +117,14 @@ export interface User {
   ein: string;
   ssn: string;
   userAgent: string;
+}
+
+export interface UnregCart {
+  userId: number;
+  products: UnregCartProduct[];
+}
+
+export interface UnregCartProduct {
+  id: number;
+  quantity: number;
 }

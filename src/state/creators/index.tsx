@@ -134,3 +134,8 @@ export const fetchUser =
 export const removeUser = () => ({
   type: ActionType.REMOVE_USER,
 });
+
+export const addIntoOfflineCart = (productId: number, quantity: number) => ({
+  type: ActionType.ADD_INTO_ONREG_CART,
+  payload: { id: productId, quantity: quantity },
+});
