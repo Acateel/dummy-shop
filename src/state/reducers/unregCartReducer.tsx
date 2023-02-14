@@ -2,13 +2,13 @@ import { Action } from "../actions";
 import { ActionType, UnregCart } from "../types";
 
 const initialState: UnregCart = {
-  userId: 0,
+  userId: 1, // this wrong but api need correct userId 
   products: [],
 };
 
 export default (state: UnregCart = initialState, action: Action) => {
   switch (action.type) {
-    case ActionType.ADD_INTO_ONREG_CART:
+    case ActionType.ADD_INTO_UNREG_CART:
       let isFindSameId = false;
       const newState: UnregCart = {
         ...state,

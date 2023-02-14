@@ -28,7 +28,7 @@ const ShortCart = (props: PropsFromRedux) => {
   }, []);
 
   const renderedQuantity = () => {
-    if (_.hasIn(cart, "totalQuantity")) {
+    if (_.hasIn(cart, "totalQuantity") && isLogged) {
       return <p className="short_cart_count">{cart.totalQuantity}</p>;
     }
     if (props.unregCart.products.length > 0) {

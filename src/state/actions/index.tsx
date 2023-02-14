@@ -48,8 +48,13 @@ interface RemoveUser {
 }
 
 interface AddIntoUnregCart {
-  type: ActionType.ADD_INTO_ONREG_CART;
+  type: ActionType.ADD_INTO_UNREG_CART;
   payload: UnregCartProduct;
+}
+
+interface FetchUnregCart {
+  type: ActionType.FETCH_UNREG_CART;
+  payload: Cart;
 }
 
 export type Action =
@@ -63,4 +68,5 @@ export type Action =
   | RemoveUserCart
   | FetchUser
   | RemoveUser
-  | AddIntoUnregCart;
+  | AddIntoUnregCart
+  | FetchUnregCart;

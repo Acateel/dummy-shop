@@ -4,7 +4,7 @@ import { Dispatch } from "react";
 import dummyJSON from "../../api/dummyJSON";
 import { Action } from "../actions";
 import { RootState } from "../store";
-import { ActionType } from "../types";
+import { ActionType, Cart } from "../types";
 
 export const fetchProducts = () => async (dispatch: Dispatch<Action>) => {
   const products = await dummyJSON
@@ -144,8 +144,20 @@ export const addIntoCart =
       // add into user cart, dont realise now
     } else {
       dispatch({
-        type: ActionType.ADD_INTO_ONREG_CART,
+        type: ActionType.ADD_INTO_UNREG_CART,
         payload: { id: productId, quantity: quantity },
       });
     }
+  };
+
+export const fetchUnregCart =
+  () => async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const unregCart = getState().unregCart;
+    const cart: Cart = await dummyJSON
+      .post("/carts/add", unregCart)
+      .then((response) => response.data);
+    dispatch({
+      type: ActionType.FETCH_UNREG_CART,
+      payload: cart,
+    });
   };
