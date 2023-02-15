@@ -2,7 +2,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../../state/store";
 import { fetchProduct, addIntoCart } from "../../state/creators";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./ShowProduct.css";
 import ImageView from "./ImageView";
 
@@ -15,6 +15,7 @@ const connector = connect(mapState, { fetchProduct, addIntoCart });
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const ShowProduct = (props: PropsFromRedux) => {
+  const [quantity, setQuantity] = useState(1);
   const params = useParams();
   const id = +(params.id ?? 0);
 
@@ -25,7 +26,19 @@ const ShowProduct = (props: PropsFromRedux) => {
   const product = props.products[id];
 
   const onBuyProduct = () => {
-    props.addIntoCart(product.id, 1); // add change quantity later
+    props.addIntoCart(product.id, quantity);
+  };
+
+  const increment = () => {
+    if (product.stock > quantity) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const decrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   const renderedProduct = () => (
@@ -43,10 +56,17 @@ const ShowProduct = (props: PropsFromRedux) => {
             </p>
             <p className="show_product_stosk">Stock: {product.stock}</p>
           </div>
-          <p className="show_product_price">{product.price}$</p>
-          <button className="show_product_buy" onClick={onBuyProduct}>
-            <img src="/buy_cart_icon.png" /> Buy
-          </button>
+          <p className="show_product_price">{product.price * quantity}$</p>
+          <div className="show_product_buy_block">
+            <button className="show_product_buy" onClick={onBuyProduct}>
+              <img src="/buy_cart_icon.png" /> Buy
+            </button>
+            <div className="show_product_quntity_block">
+              <button onClick={decrement}>-</button>
+              <h2>{quantity}</h2>
+              <button onClick={increment}>+</button>
+            </div>
+          </div>
         </div>
       </div>
       <p className="show_product_description">{product.description}</p>

@@ -73,3 +73,35 @@
 .show_product_description {
   font-size: 20px;
 }
+
+.show_product_buy_block {
+  display: flex;
+  align-items: center;
+}
+
+.show_product_quntity_block {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.show_product_quntity_block > * {
+  width: 45px;
+  height: 45px;
+  background-color: #f99417;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.show_product_quntity_block h2 {
+  text-align: center;
+  line-height: 45px;
+}
+
+.show_product_quntity_block button {
+  cursor: pointer;
+}
