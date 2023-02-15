@@ -1,4 +1,12 @@
-import { ActionType, Product, AuthUser, Cart, User, UnregCart, UnregCartProduct } from "../types";
+import {
+  ActionType,
+  Product,
+  AuthUser,
+  Cart,
+  User,
+  UnregCart,
+  UnregCartProduct,
+} from "../types";
 
 interface FetchProducts {
   type: ActionType.FETCH_PRODUCTS;
@@ -57,6 +65,11 @@ interface FetchUnregCart {
   payload: Cart;
 }
 
+interface AddIntoUserCart {
+  type: ActionType.ADD_INTO_USER_CART;
+  payload: Cart;
+}
+
 export type Action =
   | FetchProducts
   | FetchProduct
@@ -69,4 +82,5 @@ export type Action =
   | FetchUser
   | RemoveUser
   | AddIntoUnregCart
-  | FetchUnregCart;
+  | FetchUnregCart
+  | AddIntoUserCart;

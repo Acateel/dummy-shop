@@ -11,6 +11,7 @@ export enum ActionType {
   REMOVE_USER = "REMOVE_USER",
   ADD_INTO_UNREG_CART = "ADD_INTO_ONREG_CART",
   FETCH_UNREG_CART = "FETCH_UNREG_CART",
+  ADD_INTO_USER_CART = "ADD_INTO_USER_CART",
 }
 
 export interface Product {

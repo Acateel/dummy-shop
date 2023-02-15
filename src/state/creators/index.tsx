@@ -138,14 +138,37 @@ export const removeUser = () => ({
 
 export const addIntoCart =
   (productId: number, quantity: number) =>
-  async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+  async (dispatch: Dispatch<Action | Function>, getState: () => RootState) => {
     const isLogged = _.hasIn(getState().auth, "id");
     if (isLogged) {
-      // add into user cart, dont realise now
+      dispatch(addIntoUserCart(productId, quantity));
     } else {
       dispatch({
         type: ActionType.ADD_INTO_UNREG_CART,
         payload: { id: productId, quantity: quantity },
+      });
+    }
+  };
+
+export const addIntoUserCart =
+  (productId: number, quantity: number) =>
+  async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const oldCart: any = getState().cart[0];
+    if (_.hasIn(oldCart, "id")) {
+      const newCart = await dummyJSON
+        .put(`/carts/${oldCart.id}`, {
+          merge: true,
+          products: [
+            {
+              id: productId,
+              quantity: quantity,
+            },
+          ],
+        })
+        .then((response) => response.data);
+      dispatch({
+        type: ActionType.ADD_INTO_USER_CART,
+        payload: newCart,
       });
     }
   };
