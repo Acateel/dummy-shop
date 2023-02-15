@@ -25,7 +25,7 @@ const ShortCart = (props: PropsFromRedux) => {
     if (isLogged) {
       props.fetchUserCart(auth.id);
     }
-  }, []);
+  }, [auth]);
 
   const renderedQuantity = () => {
     if (_.hasIn(cart, "totalQuantity") && isLogged) {
