@@ -8,6 +8,7 @@ import Login from "./auth/Login";
 import Logout from "./auth/Logout";
 import CartProducts from "./carts/CartProducts";
 import Pay from "./pay/Pay";
+import ConfirmPay from "./pay/ConfirmPay";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/pay",
         element: <Pay />,
+      },
+      {
+        path: "/confirm",
+        element: <ConfirmPay />,
       },
     ],
   },

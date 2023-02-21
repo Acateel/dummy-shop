@@ -1,4 +1,4 @@
-const cardNumberRegex = new RegExp(/^\d{4}\d{4}\d{4}\d{4}$/);
+const cardNumberRegex = new RegExp(/^\d{17}$/);
 const cardCVVCodeRegex = new RegExp(/^\d{3}$/);
 const cardExpireRegex = new RegExp(/^\d\d\/\d\d$/);
 const cartExpireWriteRegex = new RegExp(

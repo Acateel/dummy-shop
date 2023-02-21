@@ -78,9 +78,15 @@ const Pay = (props: PropsFromRedux) => {
     }
   };
 
+  const navigate = useNavigate();
+
   const onPayFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if(checkNumber(cardNumber) && checkCVVCode(CVVCode) && checkExpire(cardExpire)){
+    if (
+      checkNumber(cardNumber) &&
+      checkCVVCode(CVVCode) &&
+      checkExpire(cardExpire)
+    ) {
       const form = {
         firstName,
         lastName,
@@ -89,7 +95,8 @@ const Pay = (props: PropsFromRedux) => {
         cardExpire,
         total: cart.discountedTotal,
       };
-      console.log(form);
+      console.log(form); // here can be api for pay
+      navigate("/confirm");
     }
   };
 

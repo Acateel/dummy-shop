@@ -49,7 +49,7 @@
   cursor: pointer;
   padding: 8px;
   margin: 0 10px 20px 0;
-  width: 100px;
+  min-width: 100px;
 }
 
 .modal_logout_button {
