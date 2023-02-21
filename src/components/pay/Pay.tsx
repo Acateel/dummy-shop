@@ -4,8 +4,15 @@ import { RootState } from "../../state/store";
 import { fetchUserCart, fetchUser } from "../../state/creators";
 import { Cart } from "../../state/types";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { isDigit, checkExpireWrite } from "./Validator";
+import {
+  isDigit,
+  checkExpireWrite,
+  checkNumber,
+  checkCVVCode,
+  checkExpire,
+} from "./Validator";
 import "./Pay.css";
+import { useNavigate } from "react-router-dom";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -73,15 +80,17 @@ const Pay = (props: PropsFromRedux) => {
 
   const onPayFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = {
-      firstName,
-      lastName,
-      cardNumber,
-      CVVCode,
-      cardExpire,
-      total: cart.discountedTotal,
-    };
-    console.log(form);
+    if(checkNumber(cardNumber) && checkCVVCode(CVVCode) && checkExpire(cardExpire)){
+      const form = {
+        firstName,
+        lastName,
+        cardNumber,
+        CVVCode,
+        cardExpire,
+        total: cart.discountedTotal,
+      };
+      console.log(form);
+    }
   };
 
   if (!cart) {
@@ -112,12 +121,18 @@ const Pay = (props: PropsFromRedux) => {
       </div>
       <div className="payment_card">
         <input
+          className={
+            cardNumber == "" || checkNumber(cardNumber) ? "" : "wrong_input"
+          }
           type="text"
           placeholder="Card number"
           value={cardNumber}
           onChange={onChangeCardNumber}
         />
         <input
+          className={
+            CVVCode == "" || checkCVVCode(CVVCode) ? "" : "wrong_input"
+          }
           type="text"
           placeholder="CVV"
           value={CVVCode}
@@ -125,6 +140,9 @@ const Pay = (props: PropsFromRedux) => {
         />
         <div></div>
         <input
+          className={
+            cardExpire == "" || checkExpire(cardExpire) ? "" : "wrong_input"
+          }
           type="text"
           placeholder="MM/YY"
           value={cardExpire}
