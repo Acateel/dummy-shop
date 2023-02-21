@@ -35,9 +35,14 @@ const Pay = (props: PropsFromRedux) => {
     }
   }, []);
 
-  if (!cart) {
-    return <h1>Dont have a card</h1>;
-  }
+  useEffect(() => {
+    if (_.hasIn(user, "id")) {
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setCardNumber(user.bank.cardNumber);
+      setCardExpire(user.bank.cardExpire);
+    }
+  }, [user]);
 
   const onPayFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -51,6 +56,10 @@ const Pay = (props: PropsFromRedux) => {
     };
     console.log(form);
   };
+
+  if (!cart) {
+    return <h1>Dont have a card</h1>;
+  }
 
   return (
     <form className="payment" onSubmit={onPayFormSubmit}>
