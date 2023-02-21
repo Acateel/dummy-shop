@@ -3,7 +3,8 @@ import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../state/store";
 import { fetchUserCart, fetchUser } from "../../state/creators";
 import { Cart } from "../../state/types";
-import { FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { isDigit, checkExpireWrite } from "./Validator";
 import "./Pay.css";
 
 const mapState = (state: RootState) => ({
@@ -43,6 +44,32 @@ const Pay = (props: PropsFromRedux) => {
       setCardExpire(user.bank.cardExpire);
     }
   }, [user]);
+
+  const onChangeCardNumber = (event: ChangeEvent<HTMLInputElement>) => {
+    const number = event.target.value;
+    const lastDigit = number[number.length - 1];
+    if (
+      number.length <= 16 &&
+      (isDigit(lastDigit) || lastDigit === undefined)
+    ) {
+      setCardNumber(number);
+    }
+  };
+
+  const onChangeCVVCode = (event: ChangeEvent<HTMLInputElement>) => {
+    const code = event.target.value;
+    const lastDigit = code[code.length - 1];
+    if (code.length <= 3 && (isDigit(lastDigit) || lastDigit === undefined)) {
+      setCVVCode(code);
+    }
+  };
+
+  const onChangeExpire = (event: ChangeEvent<HTMLInputElement>) => {
+    const expire = event.target.value;
+    if (expire === "" || checkExpireWrite(expire)) {
+      setCardExpire(expire);
+    }
+  };
 
   const onPayFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -88,20 +115,20 @@ const Pay = (props: PropsFromRedux) => {
           type="text"
           placeholder="Card number"
           value={cardNumber}
-          onChange={(e) => setCardNumber(e.target.value)}
+          onChange={onChangeCardNumber}
         />
         <input
           type="text"
           placeholder="CVV"
           value={CVVCode}
-          onChange={(e) => setCVVCode(e.target.value)}
+          onChange={onChangeCVVCode}
         />
         <div></div>
         <input
           type="text"
           placeholder="MM/YY"
           value={cardExpire}
-          onChange={(e) => setCardExpire(e.target.value)}
+          onChange={onChangeExpire}
         />
       </div>
       <button className="payment_submit" type="submit">
