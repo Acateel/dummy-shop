@@ -1,7 +1,12 @@
 import _ from "lodash";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../state/store";
-import { fetchUserCart, fetchUser } from "../../state/creators";
+import {
+  fetchUserCart,
+  fetchUser,
+  removeUserCart,
+  removeUnregCart,
+} from "../../state/creators";
 import { Cart } from "../../state/types";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import {
@@ -20,7 +25,12 @@ const mapState = (state: RootState) => ({
   user: state.user,
 });
 
-const connector = connect(mapState, { fetchUserCart, fetchUser });
+const connector = connect(mapState, {
+  fetchUserCart,
+  fetchUser,
+  removeUserCart,
+  removeUnregCart,
+});
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
@@ -96,6 +106,8 @@ const Pay = (props: PropsFromRedux) => {
         total: cart.discountedTotal,
       };
       console.log(form); // here can be api for pay
+      props.removeUnregCart();
+      props.removeUserCart();
       navigate("/confirm");
     }
   };
