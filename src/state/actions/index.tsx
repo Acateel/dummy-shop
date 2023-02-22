@@ -65,6 +65,10 @@ interface FetchUnregCart {
   payload: Cart;
 }
 
+interface RemoveUnregCart {
+  type: ActionType.REMOVE_UNREG_CART;
+}
+
 interface AddIntoUserCart {
   type: ActionType.ADD_INTO_USER_CART;
   payload: Cart;
@@ -83,4 +87,5 @@ export type Action =
   | RemoveUser
   | AddIntoUnregCart
   | FetchUnregCart
-  | AddIntoUserCart;
+  | AddIntoUserCart
+  | RemoveUnregCart;

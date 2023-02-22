@@ -2,7 +2,7 @@ import { Action } from "../actions";
 import { ActionType, UnregCart } from "../types";
 
 const initialState: UnregCart = {
-  userId: 1, // this wrong but api need correct userId 
+  userId: 1, // this wrong but api need correct userId
   products: [],
 };
 
@@ -28,6 +28,8 @@ export default (state: UnregCart = initialState, action: Action) => {
         newState.products.push(action.payload);
       }
       return newState;
+    case ActionType.REMOVE_UNREG_CART:
+      return initialState;
     default:
       return state;
   }

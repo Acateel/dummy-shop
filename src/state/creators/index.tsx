@@ -184,3 +184,7 @@ export const fetchUnregCart =
       payload: cart,
     });
   };
+
+export const removeUnregCart = () => ({
+  type: ActionType.REMOVE_UNREG_CART,
+});
