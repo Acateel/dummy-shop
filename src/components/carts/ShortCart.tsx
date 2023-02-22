@@ -1,10 +1,11 @@
-import { connect, ConnectedProps } from "react-redux";
 import _ from "lodash";
+import { useEffect } from "react";
+import { connect, ConnectedProps } from "react-redux";
+
 import { RootState } from "../../state/store";
 import { fetchUserCart } from "../../state/creators";
+import { AuthUser, Cart } from "../../state/types";
 import "./ShortCart.css";
-import { useEffect } from "react";
-import { Cart } from "../../state/types";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -17,7 +18,7 @@ const connector = connect(mapState, { fetchUserCart });
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const ShortCart = (props: PropsFromRedux) => {
-  const auth: any = props.auth;
+  const auth: AuthUser = props.auth;
   const isLogged: boolean = _.hasIn(auth, "id");
   const cart: Cart = props.cart;
 

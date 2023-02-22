@@ -1,10 +1,11 @@
-import { FormEvent, Fragment, useState } from "react";
-import { connect, ConnectedProps } from "react-redux";
 import _ from "lodash";
+import { FormEvent, useState } from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { Navigate } from "react-router-dom";
+
 import { loginAuthUser } from "../../state/creators";
 import { RootState } from "../../state/store";
 import "./Login.css";
-import { Navigate } from "react-router-dom";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,

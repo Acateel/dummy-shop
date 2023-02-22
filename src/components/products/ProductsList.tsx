@@ -1,8 +1,6 @@
+import _ from "lodash";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../state/store";
-import { fetchProducts } from "../../state/creators";
-import { Fragment, useEffect } from "react";
-import _ from "lodash";
 import ProductCart from "./ProductCart";
 import "./ProductsList.css";
 

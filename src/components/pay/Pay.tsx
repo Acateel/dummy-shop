@@ -1,5 +1,9 @@
 import _ from "lodash";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { connect, ConnectedProps } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { AuthUser, Cart, User } from "../../state/types";
 import { RootState } from "../../state/store";
 import {
   fetchUserCart,
@@ -7,8 +11,6 @@ import {
   removeUserCart,
   removeUnregCart,
 } from "../../state/creators";
-import { Cart } from "../../state/types";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import {
   isDigit,
   checkExpireWrite,
@@ -17,7 +19,6 @@ import {
   checkExpire,
 } from "./Validator";
 import "./Pay.css";
-import { useNavigate } from "react-router-dom";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -35,9 +36,9 @@ const connector = connect(mapState, {
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Pay = (props: PropsFromRedux) => {
-  const auth: any = props.auth;
+  const auth: AuthUser = props.auth;
   const cart: Cart = props.cart;
-  const user: any = props.user;
+  const user: User = props.user;
   const isLogged: boolean = _.hasIn(auth, "id");
 
   const [firstName, setFirstName] = useState("");

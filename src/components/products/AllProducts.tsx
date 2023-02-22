@@ -1,7 +1,8 @@
+import { Fragment, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
+
 import ProductsList from "./ProductsList";
 import { fetchProducts, appendProductsByLimit } from "../../state/creators";
-import { Fragment, useEffect } from "react";
 import { RootState } from "../../state/store";
 import "./LoadButton.css";
 

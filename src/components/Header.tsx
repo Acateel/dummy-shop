@@ -1,11 +1,13 @@
+import _ from "lodash";
 import { Fragment } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
-import _ from "lodash";
+
 import { RootState } from "../state/store";
-import "./Header.css";
 import SearchForm from "./search/SearchForm";
 import ShortCart from "./carts/ShortCart";
+import { AuthUser } from "../state/types";
+import "./Header.css";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -19,7 +21,8 @@ const Header = (props: PropsFromRedux) => {
   const isLogged: boolean =
     !_.isEmpty(props.auth) && !_.hasIn(props.auth, "error");
 
-  const renderedLeftHeader = (user: any) => {
+  const renderedLeftHeader = () => {
+    const user: AuthUser = props.auth;
     return (
       <Fragment>
         <Link className="nav_link" to="/">
@@ -51,7 +54,7 @@ const Header = (props: PropsFromRedux) => {
             <ShortCart />
           </Link>
           {isLogged ? (
-            renderedLeftHeader(props.auth)
+            renderedLeftHeader()
           ) : (
             <Link to="/login" className="nav_link">
               Login

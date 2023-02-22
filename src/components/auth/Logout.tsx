@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import Modal from "../modal/Modal";
 import { logoutAuthUser, removeUserCart } from "../../state/creators";
 

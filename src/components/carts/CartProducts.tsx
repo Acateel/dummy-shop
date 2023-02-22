@@ -1,11 +1,12 @@
+import _ from "lodash";
 import { Fragment, useEffect } from "react";
 import { connect, ConnectedProps } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 import { RootState } from "../../state/store";
 import { fetchUserCart, fetchUnregCart } from "../../state/creators";
-import { Cart } from "../../state/types";
+import { AuthUser, Cart } from "../../state/types";
 import "./CartProducts.css";
-import { Link, useNavigate } from "react-router-dom";
-import _ from "lodash";
 
 const mapState = (state: RootState) => ({
   auth: state.auth,
@@ -18,7 +19,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const CartProducts = (props: PropsFromRedux) => {
   const navigate = useNavigate();
-  const auth: any = props.auth;
+  const auth: AuthUser = props.auth;
   const isLogged: boolean = _.hasIn(auth, "id");
   const cart: Cart = props.cart;
 

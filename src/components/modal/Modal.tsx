@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement } from "react";
+import { MouseEventHandler} from "react";
 import { createPortal } from "react-dom";
 import "./Modal.css";
 

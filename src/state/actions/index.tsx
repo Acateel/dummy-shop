@@ -4,7 +4,6 @@ import {
   AuthUser,
   Cart,
   User,
-  UnregCart,
   UnregCartProduct,
 } from "../types";
 

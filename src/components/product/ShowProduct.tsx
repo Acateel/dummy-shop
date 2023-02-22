@@ -1,10 +1,11 @@
+import { Fragment, useEffect, useState } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { useParams } from "react-router-dom";
+
 import { RootState } from "../../state/store";
 import { fetchProduct, addIntoCart } from "../../state/creators";
-import { Fragment, useEffect, useState } from "react";
-import "./ShowProduct.css";
 import ImageView from "./ImageView";
+import "./ShowProduct.css";
 
 const mapState = (state: RootState) => ({
   products: state.products,
