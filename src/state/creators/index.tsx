@@ -6,6 +6,10 @@ import { Action } from "../actions";
 import { RootState } from "../store";
 import { ActionType, Cart } from "../types";
 
+/**
+ * Fetch Products list from api
+ * @returns Action FETCH_PRODUCTS in redux dispatch
+ */
 export const fetchProducts = () => async (dispatch: Dispatch<Action>) => {
   const products = await dummyJSON
     .get("/products")
@@ -16,6 +20,11 @@ export const fetchProducts = () => async (dispatch: Dispatch<Action>) => {
   });
 };
 
+/**
+ * Search product in api by term
+ * @param term term for search
+ * @returns Action FETCH_PRODUCTS in redux dispatch
+ */
 export const searchProducts =
   (term: string) => async (dispatch: Dispatch<Action>) => {
     const products = await dummyJSON
@@ -31,6 +40,11 @@ export const searchProducts =
     });
   };
 
+/**
+ * Fetch product from api by product Id
+ * @param id product id
+ * @returns Action FETCH_PRODUCT with product in redux dispatch
+ */
 export const fetchProduct =
   (id: number) =>
   async (dispatch: Dispatch<Action>, getState: () => RootState) => {
@@ -45,6 +59,10 @@ export const fetchProduct =
     });
   };
 
+/**
+ * Fetch categories array from api
+ * @returns Action FETCH_CATEGORIES with array in redux dispath
+ */
 export const fetchCategories = () => async (dispatch: Dispatch<Action>) => {
   const categories = await dummyJSON
     .get("/products/categories")
@@ -55,6 +73,11 @@ export const fetchCategories = () => async (dispatch: Dispatch<Action>) => {
   });
 };
 
+/**
+ * Fetch products by category
+ * @param category category from categories array
+ * @returns Action FETCH_PRODUCTS with Products list in redux dispath
+ */
 export const fetchProductsByCategory =
   (category: string) => async (dispatch: Dispatch<Action>) => {
     const products = await dummyJSON
@@ -66,6 +89,12 @@ export const fetchProductsByCategory =
     });
   };
 
+/**
+ * Fetch more Products from api
+ * @param limit how many products takes. use limit=0 to get all items
+ * @param skip skip first N elements
+ * @returns Action APPEND_PRODUCTS with products for redux dispath
+ */
 export const appendProductsByLimit =
   (limit: number, skip: number) => async (dispatch: Dispatch<Action>) => {
     const products = await dummyJSON
@@ -77,6 +106,12 @@ export const appendProductsByLimit =
     });
   };
 
+/**
+ * Login user in api
+ * @param username
+ * @param password
+ * @returns Action LOGIN_USER with data or with error if login dont access
+ */
 export const loginAuthUser =
   (username: string, password: string) =>
   async (dispatch: Dispatch<Action>) => {
@@ -100,10 +135,19 @@ export const loginAuthUser =
     }
   };
 
+/**
+ * Logout User (remove user from Redux store)
+ * @returns Action LOGOUT_USER
+ */
 export const logoutAuthUser = () => ({
   type: ActionType.LOGOUT_USER,
 });
 
+/**
+ * Take User Cart from api
+ * @param userId UserId for find user cart
+ * @returns Action FETCH_USER_CART with cart
+ */
 export const fetchUserCart =
   (userId: number) => async (dispatch: Dispatch<Action>) => {
     const cart = await dummyJSON
@@ -116,10 +160,19 @@ export const fetchUserCart =
     });
   };
 
+/**
+ * Remove User Cart
+ * @returns Action REMOVE_USER_CART
+ */
 export const removeUserCart = () => ({
   type: ActionType.REMOVE_USER_CART,
 });
 
+/**
+ * Take all information about user
+ * @param userId user id for search
+ * @returns Action FETCH_USER with user data
+ */
 export const fetchUser =
   (userId: number) => async (dispatch: Dispatch<Action>) => {
     const user = await dummyJSON
@@ -132,10 +185,20 @@ export const fetchUser =
     });
   };
 
+/**
+ * Remove User in Redux store
+ * @returns Action REMOVE_USER
+ */
 export const removeUser = () => ({
   type: ActionType.REMOVE_USER,
 });
 
+/**
+ * Add product in Cart
+ * @param productId product's Id
+ * @param quantity product's quantity
+ * @returns Action ADD_INTO_USER_CART if user logged or ADD_INTO_UNREG_CART if doesn't
+ */
 export const addIntoCart =
   (productId: number, quantity: number) =>
   async (dispatch: Dispatch<Action>, getState: () => RootState) => {
@@ -167,6 +230,10 @@ export const addIntoCart =
     }
   };
 
+/**
+ * Add Unreg Cart in Api
+ * @returns Action FETCH_UNREG_CART with Cart
+ */
 export const fetchUnregCart =
   () => async (dispatch: Dispatch<Action>, getState: () => RootState) => {
     const unregCart = getState().unregCart;
@@ -179,6 +246,10 @@ export const fetchUnregCart =
     });
   };
 
+/**
+ * Remove unreg Cart in Redux store
+ * @returns Action REMOVE_UNREG_CART
+ */
 export const removeUnregCart = () => ({
   type: ActionType.REMOVE_UNREG_CART,
 });

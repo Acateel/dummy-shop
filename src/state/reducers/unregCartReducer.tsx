@@ -6,6 +6,12 @@ const initialState: UnregCart = {
   products: [],
 };
 
+/**
+ * Create new Unreg Cart and add into new product
+ * @param cart old unreg cart
+ * @param newProduct prodact what will need add into cart
+ * @returns newUnregCart
+ */
 const setNewUnregCart = (cart: UnregCart, newProduct: UnregCartProduct) => {
   let isFindSameId = false;
   const newState: UnregCart = {
