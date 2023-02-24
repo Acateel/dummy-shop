@@ -20,5 +20,24 @@
 }
 
 .checkmark:checked {
-    accent-color: #205E61;
+  accent-color: #205e61;
+}
+
+@media screen and (max-width: 800px) {
+  .categories {
+    float: none;
+    margin-right: 30px;
+    margin-top: 10px;
+  }
+  .categories > label {
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 2px;
+  }
+
+  .checkmark {
+    margin-right: 5px;
+    height: 10px;
+    width: 12px;
+  }
 }

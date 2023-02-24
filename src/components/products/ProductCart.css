@@ -38,3 +38,31 @@
   text-decoration: inherit;
   cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+  .product_cart {
+    padding: 5px;
+    width: 150px;
+    height: 180px;
+    grid-template-rows: 100px auto auto;
+  }
+
+  .product_cart_img {
+    margin: 0px;
+    max-height: 100px;
+  }
+
+  .product_cart_name {
+    font-size: 14px;
+    margin: 3px 0px;
+    line-height: 13px;
+  }
+
+  .product_cart_price_space {
+    margin: 0px;
+  }
+
+  .product_cart_discont {
+    font-size: 14px;
+  }
+}
