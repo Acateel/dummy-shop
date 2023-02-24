@@ -22,15 +22,15 @@
 
 @media screen and (max-width: 800px) {
   .short_cart_icon {
-    width: 40px;
+    width: 30px;
   }
 
   .short_cart_count {
-    width: 19px;
-    height: 17px;
+    width: 12px;
+    height: 11px;
     padding-top: 1px;
-    font-size: 12px;
-    top: -12px;
-    right: -5px;
+    font-size: 8px;
+    top: -5px;
+    right: -2px;
   }
 }
