@@ -105,3 +105,63 @@
 .show_product_quntity_block button {
   cursor: pointer;
 }
+
+@media screen and (max-width: 1300px) {
+  .show_product_grid {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .show_product {
+    margin: 5px;
+    margin-top: 15px;
+  }
+
+  .show_product_price_section {
+    margin: auto 5px;
+    padding: 10px;
+  }
+
+  .show_product_discont_box {
+    margin-right: 0px;
+  }
+
+  .show_product_stosk,
+  .show_product_discount {
+    font-size: 20px;
+  }
+
+  .show_product_discount {
+    padding: 5px;
+    width: 80px;
+  }
+
+  .show_product_price {
+    font-size: 30px;
+    line-height: 0px;
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+  .show_product_buy {
+    height: 40px;
+    width: 100px;
+    padding: 0px 10px 0px 5px;
+    font-size: 20px;
+  }
+
+  .show_product_description {
+    font-size: 16px;
+  }
+
+  .show_product_quntity_block > * {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .show_product_quntity_block h2 {
+    line-height: 30px;
+  }
+}
