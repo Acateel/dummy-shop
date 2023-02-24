@@ -106,3 +106,35 @@
 .cart_buy_button > img {
   height: 100%;
 }
+
+@media screen and (max-width: 800px) {
+  .cart_product_id {
+    top: -5px;
+    right: -20px;
+  }
+
+  .cart_product > section {
+    font-size: 16px;
+  }
+
+  .cart_product_price > span {
+    margin-right: 60px;
+  }
+
+  .cart_product_total > .price {
+    margin-left: 20px;
+  }
+
+  .cart_product_fotter {
+    font-size: 16px;
+    margin: 15px;
+  }
+
+  .cart_buy_button {
+    height: 50px;
+    width: 120px;
+    padding: 0px 15px 0px 5px;
+    margin: 0 15px;
+    font-size: 25px;
+  }
+}

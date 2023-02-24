@@ -63,3 +63,25 @@
 .wrong_input {
   background-color: #ffdddd;
 }
+
+
+@media screen and (max-width: 800px) {
+  .payment {
+    width: 450px;
+    margin: auto;
+  }
+  
+  .payment input {
+    padding: 3px 8px;
+    font-size: 16px;
+  }
+  
+  .payment_submit {
+    height: 50px;
+    font-size: 18px;
+  }
+  
+  .payment_usd {
+    font-size: 15px;
+  }
+}
