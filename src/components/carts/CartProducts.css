@@ -114,7 +114,7 @@
   }
 
   .cart_product > section {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .cart_product_price > span {
@@ -126,15 +126,15 @@
   }
 
   .cart_product_fotter {
-    font-size: 16px;
-    margin: 15px;
+    font-size: 14px;
+    margin: 5px;
   }
 
   .cart_buy_button {
-    height: 50px;
-    width: 120px;
+    height: 40px;
+    width: 100px;
     padding: 0px 15px 0px 5px;
     margin: 0 15px;
-    font-size: 25px;
+    font-size: 20px;
   }
 }

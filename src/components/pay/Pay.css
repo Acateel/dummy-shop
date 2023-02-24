@@ -67,21 +67,35 @@
 
 @media screen and (max-width: 800px) {
   .payment {
-    width: 450px;
-    margin: auto;
+    width: 350px;
+  }
+  
+  .payment_total {
+    margin-bottom: 15px;
   }
   
   .payment input {
-    padding: 3px 8px;
-    font-size: 16px;
+    padding: 2px 5px;
+    font-size: 12px;
+  }
+  
+  .payment_fullname {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .payment_card {
+    grid-template-columns: auto 80px;
+    gap: 10px 10px;
   }
   
   .payment_submit {
-    height: 50px;
-    font-size: 18px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 16px;
   }
   
   .payment_usd {
-    font-size: 15px;
+    font-size: 12px;
   }
 }
