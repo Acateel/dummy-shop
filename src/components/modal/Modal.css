@@ -59,3 +59,21 @@
 .modal_dismiss_button {
   background-color: #2185d0;
 }
+
+@media screen and (max-width: 800px) {
+  .modal_form {
+    position: initial;
+    width: 350px;
+    margin: 150px auto;
+  }
+
+  .modal_content {
+    font-size: 17px;
+  }
+
+  .modal_action > button {
+    font-size: 16px;
+    margin: 0 5px 10px 0;
+    min-width: 80px;
+  }
+}
