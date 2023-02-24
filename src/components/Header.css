@@ -18,3 +18,15 @@ header {
   text-decoration: inherit;
   cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+  header {
+    height: 50px;
+    padding: 0 15px;
+  }
+  
+  .nav_link {
+    font-size: 16px;
+    margin: 5px;
+  }
+}

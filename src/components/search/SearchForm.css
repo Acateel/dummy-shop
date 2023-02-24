@@ -38,3 +38,17 @@
 .search_submit > img {
   width: 80%;
 }
+
+@media screen and (max-width: 800px) {
+  .search {
+    display: inline-block;
+    font-size: 15px;
+    padding: 0px 8px;
+    width: 100px;
+  }
+
+  .search_submit {
+    width: 30px;
+    height: 30px;
+  }
+}

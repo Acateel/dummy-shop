@@ -9,3 +9,17 @@ body {
 .content {
   margin: 50px;
 }
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 150%;
+  }
+
+  .content {
+    margin: 15px;
+  }
+}
